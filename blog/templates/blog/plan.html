@@ -20,101 +20,29 @@
 
         <h1>Phase 0: Requirements Specification </h1>
         <ul>
-            <li> Create the following sheets: 
-                <ul>
-                    <li>plan.html</li>
-                    <li>index.html</li>
-                    <li>about.html</li>
-                    <li>techtips-css.html</li>
-                    <li>techtips+css.html</li>
-                    <li>style.css</li>
-                </ul>
-            </li>
-            <li>
-                Each page needs to be validated by W3C validator found here <a href="https://validator.w3.org/"> here </a>
-            </li>
-            <li>
-                CSS style sheets need to be validated here <a href="https://jigsaw.w3.org/css-validator"> here </a>
-            </li>
-            <li>
-                All pages need to link to eachother
-            </li>
-            <li>
-                All of the pages need to use the style.css sheet (that is also validated at the above link). techtips-css.html does not use that page. Use a <em>relative</em> URL
-            </li>
-            <li>
-                Website needs to use at least one of all of the following features:
-                    <ul>
-                        <li>
-                            div
-                        </li>
-                        <li>
-                            p
-                        </li>
-                        <li>
-                            code
-                        </li>
-                        <li>
-                            ol
-                        </li>
-                        <li>ul</li>
-                        <li>h1</li>
-                        <li>h2</li>
-                        <li>a</li>
-                        <li>img</li>
-                    </ul>
-            </li>
-            <li>
-                And for the CSS file it needs to use the following properties and selectors:
-                    <ul>
-                        <li>
-                            background-color
-                        </li>
-                        <li>color</li>
-                        <li>font-family</li>
-                        <li>font-style</li>
-                        <li>font-size</li>
-                        <li>margin</li>
-                        <li>padding</li>
-                        <li>element</li>
-                        <li>.class</li>
-                        <li>:nth-child</li>
-                    </ul>
-            </li>
-            <li>
-                Main page needs three blog post with a title, a byline that containes author and date, and a body of text using the &lt;p&gt; symbol
-            </li>
-            <li>
-                About me page includes a portrait of the client and a brief lorem ipsum text about them. It also has three images that are part of the project directory and load using <em>relative</em> urls
-            </li>
-            <li>
-                Two techtips pages. They need to look essentially the same, one uses the style.css file while the other has manual color changes. Each cheat sheet on each page should have its own &lt;div&gt; dividers. They also have an unorderd list of facts. Both page includes the following cheat sheets:
-                    <ol>
-                        <li>
-                            Html Elements describes 4 elements where each element is named in monospace font. The name must link to its article on MDN via an absolute URL. Explain the purpose of the element and explain its purpose.
-                        </li>
-                        <li>
-                            HTML Character entities. Describe 3 characgers used in the site. Name them in monospace font and show what the symbol looks like
-                        </li>
-                        <li>
-                            Name all 4 CSS selectors used in the site. Name each in monospace font. Describe what HTML feature each selector finds (ID, class, element, etc.)
-                        </li>
-                        <li>
-                            CSS Properties: describe three properties used on the stie. Name them in monospace font. Explain purpose of each proerty
-                        </li>
-                    </ol>
- 
-            </li>
-           <li>
-                The two pages should be identical or close to it. Do techtips+css.html first, then convert that into the HTML only page
-            </li>
+            <li>Implment polls app from tutuorial</li>
+            <li> Create new app called blog</li>
+            <li>Copy CSS and image files from previous assignments here</li>
+            <li> Copy html files into templates section of this new app</li>
+            <li> Add dynamic element to each of those html files using the {{}} syntax</li>
+            <li> Update this plan and include something dynamic here</li>
+            <li> Create two models in the blog. Blog class and Comments class with values shown <a href="https://usu.instructure.com/courses/709835/assignments/3776674">here</a></li>
+            <li>Create three dynamic pages
+                <ol>
+                    <li>Blog home: display the most recent 3 blogs, newest first. Display first 100 words and number of comments ont the post
 
-            <li>A <em><strong>good</strong></em> solution will implement all of the above information smoothly and accurately</li>
-            <li> Some challenges I forsee are putting in all of the CSS information correctly. This is my first time working with html so I 
-            still make some annoying mistakes. I will be verifiying my code often
+                    </li>
+
+                    <li>Blog archive which lists all blogs, newest first. Each displays 100 words and number of comments on the post</li>
+                    <li>Blog entry: detailed view wchih displays entire blog post, all comemnts for post newest to oldest, and an Add Comment form which POSTs a new comment then redirect user back to the sam blog entry</li>
+
+                </ol>
             </li>
-            <li>Creating this plan above has already made me figure out how to nest tags, create lists, use emphasis and strong keywords. The next step for me is to learn what capabilites everything has and how I can best use them in my websites.</li>
+            <li> Create a data migration to populate with dummy data</li>
+            <li>At least 4 blog entries with more than 100 words. Each blog needs a title, author,a nd posted date</li>
+            <li> Create 4 comments to see that blog home and archives pages operate correctly. Use email, commenter name and posted date. All comments can be identical <em>lorem ipsum</em></li>
         </ul>
+
     </div>
 
     <div class="div-1">
@@ -122,14 +50,13 @@
         <h1>Phase 1: System Analysis </h1>
         Data used by the program:
         <ol>
-            <li> No stored user/viewer data</li>
+            <li> Stored blog data with comments, words, date added, and author</li>
             <li> It will use website links to other pages as well as the validator websites</li>
-            <li> Website will also need to have a link to an img for display</li>
+            <li> Website will also need to have a images in the static area</li>
         </ol>
-        The output will be in the form a website with five different pages. There will be three images hosted within my code and all the pages should link to eachother. There will be CSS elements across all of them.
+        The output will be in the form a website with stored blog data that can be read and utilizied.
 
         I can't think of any algorithms that this website will need to use. 
-
 
     </div>
 
