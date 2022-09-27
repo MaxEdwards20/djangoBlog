@@ -1,0 +1,65 @@
+body {
+    background-color: darkgrey;
+    font-family: serif;
+    font-style: oblique;
+    margin: 1% 1%;
+}
+h1 { /* this is an element selector, and is less specific than a class selector */
+    font-size: 26px;
+    color: orange;
+}
+h2 {
+    font-size: 20px;
+    color: orange;
+    text-indent: 40px;
+}
+
+.blogPost{
+    background-color: indianred;
+    padding: 1% 1%;
+    margin: 3% 3%;
+}
+
+.blogImage {
+    width: 500px;
+    margin: 3% 3%;
+    padding: 1% 1%;
+}
+.navigationBar {
+    background-color: #e8ffff;
+    color: indianred;
+    font-family: Georgia;
+    font-style: normal;
+    margin: 1% 1%;
+}
+
+.div-0 {
+    background-color:#e8ffff ;
+}
+.div-1 {
+    background-color:#bfe6ff ;
+}
+.div-2 {
+   background-color: #45b6fe ;
+}
+.div-3 {
+    background-color: #3792cb ;
+}
+.div-4 {
+    background-color:#296d98 ;
+}
+.div-5 {
+    background-color:#1c4966 ;
+}
+.div-6 {
+    background-color:#0e2433 ;
+}
+.mono{
+    font-family: monospace;
+    font-style: normal;
+    font-size: 22px;
+}
+#Carbs {
+    color: orange;
+    font-size: 22px;
+}
