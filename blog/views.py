@@ -40,18 +40,16 @@ def archive(request):  # index
 
 def blogPost(request, blog_id):  # detail
     post = get_object_or_404(Blog, pk=blog_id)
-    return render(request, 'blog/blogPost.html', {'post': post})
+    context = {'post': post,
+               'comments': post.comment_set.all().order_by('posted').reverse()
+               }
+    return render(request, 'blog/blogPost.html',context )
 
 
 def addComment(request, blog_id):
     post = get_object_or_404(Blog, pk=blog_id)
-    try:
-        selected_comment = post.comment_set.get(pk=request.POST['comment'])
-    except (KeyError, Comment.DoesNotExist):
-        return render(request, 'blog/blogPost.html', {
-            'post': post,
-            'error_message': "You didn't select a choice."
-        })
-    else:
-        selected_comment.save()
-        return HttpResponseRedirect(reverse('blog:home', args=(blog_id,)))
+    data = request.POST
+    comment = Comment(content=data['content'], commenter=data['commenter'], email=data['email'], posted=data['posted'],
+                      blog=post)
+    comment.save()
+    return HttpResponseRedirect(reverse('blog:blogPost', args=(blog_id,)))
