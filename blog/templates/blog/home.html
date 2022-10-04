@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
-        {% load static %}
+{% load static %}
 <link rel="stylesheet" href="{% static 'blog/style.css' %}">
 </head>
 <body>
@@ -20,10 +20,14 @@
     {% if latestBlogPosts %}
         <ul>
         {% for post in latestBlogPosts %}
-            <li><a href="{% url 'blog:blogPost' post.id %}">{{ post.content|truncatewords:100 }}</a></li>
+            <li>
+                <a href="{% url 'blog:blogPost' post.id %}"><h1>{{post.title}}</h1></a>
+             <h2> Author: {{post.author}}</h2>
+            <p>{{ post.content|truncatewords:100 }}<p>
             {% for choice in post.comment_set.all %}
-            <li>Number of comments: "choice{{forloop.counter}}"</li>
+            Number of comments: "choice{{ forloop.counter }}"
             {% endfor %}
+            </li>
         {% endfor %}
         </ul>
     {% else %}
