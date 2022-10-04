@@ -20,17 +20,14 @@ def plan(request):
 
 
 def home(request):
-    latestBlogPosts = Blog.objects.order_by('posted')[:3]
-    print(len(latestBlogPosts))
-    for post in latestBlogPosts:
-        print(post)
+    latestBlogPosts = reversed(Blog.objects.order_by('posted')[:3])
     context = {
         'latestBlogPosts': latestBlogPosts
     }
     return render(request, 'blog/home.html', context)
 
 def archive(request):
-    allBlogPosts = Blog.objects.order_by('posted')
+    allBlogPosts = reversed(Blog.objects.order_by('posted'))
     context = {
         'latestBlogPosts': allBlogPosts
     }
