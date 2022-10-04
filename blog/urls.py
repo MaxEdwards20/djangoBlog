@@ -11,5 +11,6 @@ urlpatterns = [
     path('techtips+css', views.techtipsCss, name='techtipsCss'),
     path('techtips-css', views.techtipsNoCss, name='techtipsNoCss'),
     path('plan', views.plan, name='plan'),
-    path('entry/<int:question_id>/', views.blogPost, name="blogPost")
+    path('entry/<int:blog_id>/', views.blogPost, name="blogPost"),
+    path('addComment/<int:blog_id>/', views.addComment, name="addComment"),
 ]

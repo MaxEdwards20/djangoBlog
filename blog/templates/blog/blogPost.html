@@ -3,18 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Blog Post</title>
-            {% load static %}
+    {% load static %}
 <link rel="stylesheet" href="{% static 'blog/style.css' %}">
 </head>
 <body>
-    <div class="navigationBar">
-            <a href="about"> About Page</a>
-            <a href="home"> Main Blog</a>
-            <a href="archive"> Archive </a>
-            <a href="plan"> See The Plan!</a>
-            <a href="techtips-css"> Techtips w/o CSS</a>
-            <a href="techtips+css"> Techtips with CSS </a>
+    <div class="blogPost">
+
+        <h1>{{post.title}}</h1>
+        <h2> Author: {{post.author}}</h2>
+        <p>Date Published: {{post.posted}}</p>
+        <p>{{ post.content }}</p>
+        {% for comment in post.comment_set.all %}
+        <h1> Comment #{{forloop.counter}}</h1>
+            <h2> Author: {{comment.commenter}}</h2>
+            <p> Date Posted: {{comment.posted}}</p>
+            <p>{{comment.content}}</p>
+            <p> Email: {{comment.email}}</p>
+        {% endfor %}
+
     </div>
+
+<!--    <div>-->
+<!--        <form action="{% url 'blog:addComment' post.id %}" method="post">-->
+<!--        {% csrf_token %}-->
+<!--        <fieldset>-->
+<!--        <legend><h1>{{ blog.title }}</h1></legend>-->
+<!--        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}-->
+<!--        {% for comment in blog.comment_set.all %}-->
+
+<!--            <input type="text" name="newComment">-->
+
+<!--        {% endfor %}-->
+<!--        </fieldset>-->
+<!--        <input type="submit" value="Vote">-->
+<!--        </form>-->
+<!--    </div>`-->
+
+
 
 </body>
 </html>

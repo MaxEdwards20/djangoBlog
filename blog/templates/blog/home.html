@@ -16,25 +16,25 @@
             <a href="techtips+css"> Techtips with CSS </a>
     </div>
 
-    <div>
+
     {% if latestBlogPosts %}
-        <ul>
+
         {% for post in latestBlogPosts %}
-            <li>
-                <a href="{% url 'blog:blogPost' post.id %}"><h1>{{post.title}}</h1></a>
-             <h2> Author: {{post.author}}</h2>
-                <p>Date Published: {{post.posted}}</p>
-            <p>{{ post.content|truncatewords:100 }}<p>
-            {% for choice in post.comment_set.all %}
-            Number of comments: "choice{{ forloop.counter }}"
-            {% endfor %}
-            </li>
+        <div class="blogPost">
+
+            <a href="{% url 'blog:blogPost' post.id %}"><h1>{{post.title}}</h1></a>
+            <h2> Author: {{post.author}}</h2>
+            <p>Date Published: {{post.posted}}</p>
+            <p>{{ post.content|truncatewords:100 }}</p>
+            <p>Number of comments: {{ post.comment_set.all|length }}</p>
+
+        </div>
         {% endfor %}
-        </ul>
+
     {% else %}
         <p>No posts are available.</p>
     {% endif %}
-    </div>
+
 
 </body>
 </html>
