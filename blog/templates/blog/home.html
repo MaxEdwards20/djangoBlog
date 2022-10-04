@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
+        {% load static %}
+<link rel="stylesheet" href="{% static 'blog/style.css' %}">
 </head>
 <body>
     <div class="navigationBar">
@@ -12,6 +14,21 @@
             <a href="plan"> See The Plan!</a>
             <a href="techtips-css"> Techtips w/o CSS</a>
             <a href="techtips+css"> Techtips with CSS </a>
+    </div>
+
+    <div>
+    {% if latestBlogPosts %}
+        <ul>
+        {% for post in latestBlogPosts %}
+            <li><a href="{% url 'blog:blogPost' post.id %}">{{ post.content|truncatewords:100 }}</a></li>
+            {% for choice in post.comment_set.all %}
+            <li>Number of comments: "choice{{forloop.counter}}"</li>
+            {% endfor %}
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No posts are available.</p>
+    {% endif %}
     </div>
 
 </body>

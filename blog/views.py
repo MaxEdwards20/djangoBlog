@@ -20,11 +20,18 @@ def plan(request):
 
 
 def home(request):
-    return render(request, 'blog/home.html')
-
+    latestBlogPosts = Blog.objects.order_by('posted')[:3]
+    context = {
+        'lastestBlogPosts': latestBlogPosts
+    }
+    return render(request, 'blog/home.html', context)
 
 def archive(request):
-    return render(request, 'blog/archive.html')
+    allBlogPosts = Blog.objects.order_by('posted')
+    context = {
+        'allBlogPosts': allBlogPosts
+    }
+    return render(request, 'blog/home.html', context)
 
 def blogPost(request, blog_id):
     blog_id = get_object_or_404(Blog, pk=blog_id)
