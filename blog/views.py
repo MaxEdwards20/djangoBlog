@@ -1,25 +1,28 @@
+import datetime
+
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from .models import Blog, Comment
 from django.urls import reverse
+from django.utils import timezone
 from django.template import loader
 
 
 # Create your views here.
 def about(request):
-    return render(request, 'blog/about.html')
+    return render(request, 'blog/about.html', {'time': timezone.now()})
 
 
 def techtipsCss(request):
-    return render(request, 'blog/techtips+css.html')
+    return render(request, 'blog/techtips+css.html', {'time': timezone.now()})
 
 
 def techtipsNoCss(request):
-    return render(request, 'blog/techtips-css.html')
+    return render(request, 'blog/techtips-css.html', {'time': timezone.now()})
 
 
 def plan(request):
-    return render(request, 'blog/plan.html')
+    return render(request, 'blog/plan.html', {'time': timezone.now()})
 
 
 def home(request):  # index

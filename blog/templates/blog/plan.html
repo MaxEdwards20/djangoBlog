@@ -16,8 +16,9 @@
             <a href="techtips-css"> Techtips w/o CSS</a>
             <a href="techtips+css"> Techtips with CSS </a>
     </div>
-    <div>
+   <div>
         <h1> User Address : {{ request.META.REMOTE_ADDR }}</h1>
+        <h1> Time: {{ time }}</h1>
     </div>
     <div class="div-0"> 
 
@@ -66,6 +67,120 @@
     <div class="div-2"> 
 
         <h1>Phase 2: Design </h1>
+    <p> TO GRADER: I would look directly at my HTML source code for the python planning. It's not clear from the web rendered end</p>
+
+
+        <div>
+            <h2> Models</h2>
+            <pre>
+            <code>
+                class Blog
+                    title = CharField
+                    author = CharField
+                    content = TextField
+                    posted = DateTimeField
+                    def published_recently: Get this from the tutorial:
+                        return self.posted >= timezone.now() - datetime.timedelta(days=3)
+
+                    def __str__(self):
+                        return self.title
+
+                class Comment
+                    blog = Blog
+                    commenter = CharField
+                    email = EmailField
+                    content = TextField
+                    posted = DateTimeField
+
+                    def __str__(self):
+                        return "Comment by: " + str(self.commenter)
+            </code>
+            </pre>
+
+        </div>
+
+        <div>
+            <h2> Views</h2>
+            <pre>
+            <code>
+
+                def about(request):
+                    return render(about)
+
+
+                def techtipsCss(request):
+                    return render(techtips+css.html)
+
+
+                def techtipsNoCss(request):
+                    return render(techtips-css.html)
+
+
+                def plan(request):
+                    return render(plan.html)
+
+                def home(request):  # index
+                    latestBlogPosts =get posts ordered by date
+                    context = {
+                        'latestBlogPosts': latestBlogPosts
+                    }
+                    return render(home.html, context)
+
+                def archive(request):  # index
+                    allBlogPosts = get posts ordered by date
+                    return render(request, 'blog/home.html', allBlogPosts)
+
+                def blogPost(request, blog_id):  # detail
+                    post = get_object_or_404(blog_id)
+                    return render(request, 'blog/blogPost.html',{comments, posts} )
+
+                def addComment(request, blog_id):
+                    post = getPost(blog_id)
+                    data = request.POST
+                    comment = new Comment(pass in data from POST here)
+                    comment.save()
+                    return HttpResponseRedirect()
+            </code>
+            </pre>
+
+        </div>
+        <div>
+            <h2> Data Migration</h2>
+            <pre>
+            <code>
+                wordVar = loremIpsumText
+                for i in range(6):
+                    createBlogPosts with gnereated blog data
+                    blog.save()
+                    for j in range(6):
+                        createComments for previously created blogPost
+                        comment.save()
+
+            </code>
+            </pre>
+
+        </div>
+        <div>
+            <h2> Blog Post Page</h2>
+            <ul>
+                <li> Blog Post Content accessed through double brackets. post.title, post.author, post.posted, etc. Each displayed clearly on its own line</li>
+                <li> Button that follows the same outline as the form in the tutorial. Needs all values of a comment content, commenter, email, posted</li>
+                <li> Submit Button returns the person back to the correct page</li>
+            </ul>
+
+        </div>
+                <div>
+            <h2> Home Blog Page/ Arhcive Page</h2>
+                    <ul>
+                        <li> Navigation Bar to move around the website</li>
+                        <li> Check for latestBlogPosts and loop through them</li>
+                        <li> For post in posts: display author, publish date, content truncated to 100 words, and number of comments</li>
+                        <li> Number of comments can be accessed using the length operator</li>
+                        <li> Display no posts available if there are none</li>
+                    </ul>
+
+        </div>
+
 
     </div>
 
@@ -74,8 +189,9 @@
         <h1>Phase 3: Implementation </h1>
         <ul>
             <li>
-                Attempted to use a counter loop to get all the associated comments for each post
+                Attempted to use a counter loop to get all the associated comments for each post. Switched to length instead
             </li>
+            <li> It makes more sense to me to access values in python and pass them into the html as part of the context dictionary</li>
         </ul>
 
 
@@ -113,24 +229,24 @@
 
         <h1>Phase 6: Maintenance </h1>
         <ul>
-            <li>What parts of your program are sloppily written and hard to understand?
+            <li>What parts of your program are sloppily written and hard to understand? I think my program is well written. The only sloppy thing comes from the css file and how bad its formatting looks.
             <ul>
-                <li>Are there parts of your program which you aren’t quite sure how/why they work?</li>
-                <li>If a bug is reported in a few months, how long would it take you to find the cause?</li>
+                <li>Are there parts of your program which you aren’t quite sure how/why they work? I think Django abstracts away a lot of questions I have. I wonder how we can import a class in the migrations thing, but I udnerstand how to make it work</li>
+                <li>If a bug is reported in a few months, how long would it take you to find the cause? I think it would take me a while. There is a lot here going on that I don't really udnerstand completely, I just know how to make it work</li>
             </ul>
             </li>
         <li>Will your documentation make sense to
             <ul>
-                <li>anybody besides yourself?</li>
-                <li>yourself in six month’s time? </li>
+                <li>anybody besides yourself? Yes. I wish I knew how to format the code sections better, but it is correct.</li>
+                <li>yourself in six month’s time? Yes. It's more so on Django docs than mine to figure something new our.</li>
             </ul>
         </li>
-        <li>How easy will it be to add a new feature to this program in a year? </li>
+        <li>How easy will it be to add a new feature to this program in a year? Hard if I havent' used Django since then. If I have, then I think I would figure it out just fine</li>
             <li>Will your program continue to work after upgrading
             <ul>
                 <li>your computer’s hardware? Yes, this is hardware independent.</li>
-                <li>the operating system? Yes, unless there is a new version of HTML out, then I would need to do some updates.</li>
-                <li>to the next version of Python? Yes, this doesn't even use Python</li>
+                <li>the operating system? Yes, OS should't affect a web application</li>
+                <li>to the next version of Python? Unless there is a breaking change in Python, yes.</li>
             </ul>
         </li>
     </ul>
